@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: ./career/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      # - .:/career
+      # - /career/node_modules
+      - next_volume:/career/
+    # command: npm run dev
+volumes:
+  next_volume:
+    driver: local
+    name: next_volume
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/afanti/Desktop/project/career
